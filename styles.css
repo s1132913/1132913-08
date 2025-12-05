@@ -1,0 +1,168 @@
+:root{
+  --bg1:#e9eef6;        /* 淡藍白背景 */
+  --bg2:#cfdaf0;
+  --card:#f8fafc;      /* 卡片白 */
+  --line:#d6deea;      /* 邊框線 */
+  --text:#1f2937;      /* 深灰藍字 */
+  --muted:#6b7280;
+
+  --x:#ef4444;         /* X 紅 */
+  --o:#3b82f6;         /* O 藍 */
+  --win:#fde68a;       /* 勝利淡金 */
+
+  --btn:#3b82f6;
+  --btn-hover:#2563eb;
+}
+
+*{ box-sizing:border-box; }
+
+html,body{
+  height:100%;
+  margin:0;
+  font-family:"Noto Sans TC", system-ui;
+  background: linear-gradient(135deg,var(--bg1),var(--bg2));
+  display:grid;
+  place-items:center;
+  color:var(--text);
+}
+
+/* 主卡片 */
+.container{
+  width:min(720px,94%);
+  background:var(--card);
+  border-radius:26px;
+  padding:26px 22px 28px;
+  text-align:center;
+  box-shadow:
+    0 10px 25px rgba(0,0,0,.08),
+    0 2px 6px rgba(0,0,0,.05);
+}
+
+/* 標題 */
+h1{
+  margin:0 0 14px;
+  font-size:28px;
+  letter-spacing:2px;
+}
+
+/* 狀態列 */
+.status{
+  margin-bottom:14px;
+  font-size:16px;
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  color:var(--muted);
+}
+
+#turn{
+  color:var(--text);
+}
+
+#state{
+  font-weight:700;
+  color:#d97706;
+}
+
+/* 棋盤 */
+.board{
+  margin:18px auto;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+  background:#eef2ff;
+  padding:14px;
+  border-radius:22px;
+  width:min(420px,95%);
+  aspect-ratio:1/1;
+  border:1px solid var(--line);
+}
+
+/* 棋格 */
+.cell{
+  border-radius:18px;
+  background:white;
+  border:1px solid var(--line);
+  font-size:56px;
+  font-weight:900;
+  display:grid;
+  place-items:center;
+  cursor:pointer;
+  transition:.2s ease;
+}
+
+.cell:hover{
+  background:#f1f5f9;
+  transform: translateY(-2px);
+  box-shadow:0 6px 14px rgba(0,0,0,.08);
+}
+
+.cell:disabled{
+  cursor:default;
+  opacity:.9;
+}
+
+.cell.x{ color:var(--x); }
+.cell.o{ color:var(--o); }
+
+.cell.win{
+  background:var(--win);
+  color:#92400e;
+  box-shadow:0 0 0 3px rgba(251,191,36,.35) inset;
+}
+
+/* 記分板（與整體同色系） */
+.scoreboard{
+  margin-top:16px;
+  padding:14px 24px;
+  border-radius:18px;
+  background:#f1f5f9;
+  display:inline-block;
+  font-size:16px;
+  border:1px solid var(--line);
+}
+
+.scoreboard h2{
+  margin:0 0 8px;
+  font-size:20px;
+  font-weight:800;
+}
+
+.scoreboard p{
+  margin:6px 0;
+  color:var(--text);
+  font-weight:600;
+}
+
+#score-x{ color:var(--x); font-weight:900; }
+#score-o{ color:var(--o); font-weight:900; }
+#score-draw{ color:#ca8a04; font-weight:900; }
+
+/* 按鈕 */
+.controls{
+  margin-top:20px;
+  display:flex;
+  justify-content:center;
+  gap:14px;
+}
+
+button{
+  padding:10px 22px;
+  border-radius:14px;
+  border:0;
+  background:var(--btn);
+  color:white;
+  font-size:15px;
+  cursor:pointer;
+  transition:.2s ease;
+}
+
+button:hover{
+  background:var(--btn-hover);
+  transform: translateY(-1px);
+}
+
+button:active{
+  transform: scale(.96);
+}
+
