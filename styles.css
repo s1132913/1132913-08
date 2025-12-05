@@ -1,0 +1,79 @@
+styles.css
+/* 先設定全域變數 */
+:root{
+  --bg: #f0f0f5;       /* 背景淺灰 */
+  --text: #1a1a1a;     /* 預設文字顏色深色 */
+  --x: #ff4d4d;        /* X 紅色 */
+  --o: #4dd0e1;        /* O 藍色 */
+  --win: #ffe066;      /* 贏格黃色 */
+}
+
+/* 基本版面 */
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; font-family: 'Noto Sans TC', system-ui, -apple-system, sans-serif; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+/* main container */
+.container { width: min(720px, 96%); text-align: center; }
+h1 { margin: 0 0 16px 0; font-size: 24px; }
+.status { margin-bottom: 12px; }
+
+/* 棋盤 */
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  padding: 12px;
+  border-radius: 14px;
+  width: min(560px, 92%);
+  aspect-ratio: 1/1;
+}
+
+/* 棋盤格 */
+.cell {
+  border-radius: 10px;
+  background: #ffffff;               /* 白色格子 */
+  border: 1px solid rgba(0,0,0,0.1); /* 淺灰邊框 */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15); /* 陰影效果 */
+  font-size: 48px;
+  font-weight: 800;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  color: var(--text);               /* 預設文字深色 */
+}
+
+.cell.x { color: var(--x); }
+.cell.o { color: var(--o); }
+.cell.win { background: var(--win); color: #000; }
+
+/* 計分板 */
+.scoreboard {
+  margin-top: 16px;
+  text-align: left;
+  display: inline-block;
+}
+.scoreboard h2 { margin-bottom: 8px; font-size: 18px; }
+
+/* 控制按鈕 */
+.controls { margin-top: 12px; }
+button {
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 0;
+  background: #21264a;
+  color: var(--text);
+  cursor: pointer;
+}
+button:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
